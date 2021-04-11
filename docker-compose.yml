@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: .devcontainer/api.dockerfile
+#     image: "node:buster"
+#     volumes:
+#       - .:/app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+#    command: [ "bash", "-c", "yarn start; sleep infinity" ]
+#    command: [ "bash", "-c", "cd /app && npm start; sleep infinity" ]
+    links:
+      - mariadb
+  mariadb:
+    build:
+      context: .
+      dockerfile: .devcontainer/mariadb.dockerfile
+    env_file:
+      - .env
+      - .env-mariadb
+  web:
+    image: nginx
+    ports:
+       - "8080:80"
+    volumes:
+      - ./public:/usr/share/nginx/html
