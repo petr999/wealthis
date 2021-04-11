@@ -24,8 +24,10 @@ services:
       - .env
       - .env-mariadb
   web:
-    image: nginx
+    build:
+      context: .
+      dockerfile: .devcontainer/web.dockerfile
     ports:
-       - "8080:80"
+       - "80:80"
     volumes:
       - ./public:/usr/share/nginx/html
