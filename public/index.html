@@ -20,8 +20,10 @@
       <p />
 
       <div v-for="result in data" class="result">
+        <img :src="result.avatar" />
         <b>First Name:</b> {{result.first_name}}<br />
         <b>Last Name:</b> {{result.last_name}}<br />
+        <b>Email:</b> {{result.email}}<br />
         <br clear="left" />
       </div>
 
