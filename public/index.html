@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-		<style>
-		[v-cloak] {display: none}
-		</style>
-		<!-- link rel="stylesheet" href="style.css" -->
-	</head>
-	<body>
-  <h1>Wealthis</h1>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wealthis</h1>
 
-		<div id="app" v-cloak>
-			<input v-model="term" type="search">
-			<button @click="search">Search</button>
-			<p/>
+    <div id="app" v-cloak>
+      <input v-model="searchString" type="search" />
+      <button @click="search">Search</button>
+      <p />
 
-			<div v-for="result in results" class="result">
-				<img :src="result.artworkUrl100">
-				<b>Artist:</b> {{result.artistName}}<br/>
-				<b>Track:</b> {{result.trackName}}<br/>
-				<b>Released:</b> {{result.releaseDate | formatDate}}
-				<br clear="left">
-			</div>
+      <div v-for="result in data" class="result">
+        <b>First Name:</b> {{result.first_name}}<br />
+        <b>Last Name:</b> {{result.last_name}}<br />
+        <br clear="left" />
+      </div>
 
-			<div v-if="noResults">
-				Sorry, but no results were found. I blame Apple.
-			</div>
+      <div v-if="noResults">Sorry, but no results were found.</div>
 
-			<div v-if="searching">
-				<i>Searching...</i>
-			</div>
+      <div v-if="searching">
+        <i>Searching...</i>
+      </div>
+    </div>
 
-		</div>
-
-		<script src="https://unpkg.com/vue"></script>
-		<script src="app.js"></script>
-	</body>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
